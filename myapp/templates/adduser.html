@@ -228,7 +228,7 @@ i {
             <div class="form-group">
             <p>Username <span>*</span></p>
             <span class="icon-case"><i class="fa fa-user"></i></span>
-        <input type="text" name="username" id="name" id="prenom" data-rule="required" onblur="nameValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
+        <input type="text" name="username" id="name" id="prenom" required data-rule="required" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="nameValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
                 <div class="validation"></div>
                 
       </div>
@@ -239,7 +239,7 @@ i {
       <div class="form-group">
       <p>E-mail <span>*</span></p>  
       <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
-                <input type="email" name="email" id="email" data-rule="email" onblur="emailValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
+                <input type="email" name="email" id="email" data-rule="email" required oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="emailValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
                 <div class="validation"></div>
       </div>  
       <span id="emailReq" class="formValid"  style="display: none;color: red;">Field Required*</span>
@@ -248,7 +248,7 @@ i {
       <div class="form-group">
       <p>Phone <span>*</span></p>
       <span class="icon-case"><i class="fa fa-phone" aria-hidden="true"></i></span>
-        <input type="text" name="phone" id="phone" data-rule="required" onblur="phoneValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+        <input type="text" name="phone" id="phone" data-rule="required" required oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="phoneValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
                 <div class="validation"></div>
           
       </div>
@@ -258,7 +258,7 @@ i {
       <div class="form-group">
       <p>Place <span>*</span></p>
       <span class="icon-case">	<i class="fa fa-location-arrow"></i></span>
-        <input type="text" name="place" id="place" data-rule="required" onblur="placeValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+        <input type="text" name="place" id="place" data-rule="required" required oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="placeValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
                 <div class="validation"></div>
       </div>
       <span id="placeReq" class="formValid" style="display: none;color: red;">Field Required*</span>
@@ -266,7 +266,7 @@ i {
       <div class="form-group">
       <p>Password <span>*</span></p>
       <span class="icon-case">	<i class="fa fa-lock"></i></span>
-        <input type="password" name="password" id="password" onblur="passValid()" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Adresse' doit être renseigné."/>
+        <input type="password" name="password" id="password" minlength="5" required oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="passValid()" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Adresse' doit être renseigné."/>
                 <div class="validation"></div>
       </div>
 

@@ -119,7 +119,7 @@ background:#ff3f34 !important;
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" class="form-control formValid" id="name" name="username" placeholder="Username" required="required" onblur="nameValid()">
+				<input type="text" class="form-control formValid" id="name" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" name="username" placeholder="Username" required="required" onblur="nameValid()">
 				
 			</div>
 			<span id="nameReq" class="formValid" style="display: none;color: red;">Field Required*</span>
@@ -135,7 +135,7 @@ background:#ff3f34 !important;
 						<i class="fa fa-envelope-o"></i>
 					</span>
 				</div>
-				<input type="email" id="email" class="form-control" name="email" placeholder="Email Address" required="required" onblur="emailValid()">
+				<input type="email" id="email" class="form-control" name="email" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" placeholder="Email Address" required="required" onblur="emailValid()">
 			</div>
 			<span id="emailReq" class="formValid"  style="display: none;color: red;">Field Required*</span>
             <span id="emailErr" class="formValid"  style="display: none;color: red;">Invalid email*</span>
@@ -148,7 +148,7 @@ background:#ff3f34 !important;
 						<i class="fa fa-phone" aria-hidden="true"></i>
 					</span>
 				</div>
-				<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" required="required" onblur="phoneValid()">
+				<input type="text" class="form-control" id="phone" name="phone" minlength="10" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" placeholder="Phone Number" required="required" onblur="phoneValid()">
 			</div>
 			<span id="phoneReq" class="formValid"  style="display: none;color: red;">Field Required*</span>
             <span id="phoneErr" class="formValid"  style="display: none;color: red;">only numbers*</span>
@@ -161,7 +161,7 @@ background:#ff3f34 !important;
 						<i class="fa fa-location-arrow"></i>
 					</span>
 				</div>
-				<input type="text" class="form-control" id="place" name="place" placeholder="Place" required="required" onblur="placeValid()">
+				<input type="text" class="form-control" id="place" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" name="place" placeholder="Place" required="required" onblur="placeValid()">
 			</div>
 			<span id="placeReq" class="formValid" style="display: none;color: red;">Field Required*</span>
         </div>
