@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        :root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+body {
+  background: red;
+  background: red;
+}
+
+.card-signin {
+  margin-bottom: 5rem;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+.btn-login{
+background:red;
+}
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin mb-3 my-5">
+          <div class="card-body mt-3">
+            <p style="color:red;text-align:center">{{error}}</p>
+            <h5 class="card-title text-center">Sign In</h5>
+            <form class="form-signin" method="post">{% csrf_token %}
+              <div class="form-label-group mb-4">
+                <input type="text" name="username" id="name" onblur="nameValid()" class="form-control" placeholder="User Name" required autofocus>
+               
+              </div>
+              <span id="nameReq" class="formValid" style="display: none;color: red;">Field Required*</span>
+                        
+                <span id="nameLen" class="formValid" style="display: none;color: red;">Minimum 4 characters required*</span>
+
+              <div class="form-label-group mb-3">
+                <input type="password" id="password" name="password" minlength="5" oninvalid="setCustomValidity(' ')" onchange="setCustomValidity('')" onblur="passValid()" class="form-control" placeholder="Password" required>
+                
+              </div>
+              <span id="passErr" class="formValid"  style="display: none;color: red;">Password is too short*</span>
+              <span id="passReq" class="formValid"  style="display: none;color: red;">Password required*</span>
+
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+              <button class="btn btn-lg  btn-block text-uppercase btn-login" type="submit">Sign in</button>
+              <hr class="my-4">
+              <button class="btn  btn-google btn-block " type="submit"><a href="{% url 'registration' %}" >Not Registered ?</a></button>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    
+	function nameValid() {
+    var text = document.getElementById("name").value;
+   
+
+    if (text == "") {
+      document.getElementById("nameReq").style.display = "block";
+      document.getElementById("nameLen").style.display = "none";
+      document.getElementById("nameErr").style.display = "none";
+    } 
+    else if (text.length < 5) {
+      document.getElementById("nameLen").style.display = "block";
+      document.getElementById("nameReq").style.display = "none";
+      document.getElementById("nameErr").style.display = "none";
+    }
+    else {
+      document.getElementById("nameReq").style.display = "none";
+      document.getElementById("nameLen").style.display = "none";
+      document.getElementById("nameErr").style.display = "none";
+
+    }
+  }
+
+
+    
+	  function passValid() {
+      var text = document.getElementById("password").value;
+      
+  
+       if (text.length < 5) {
+        document.getElementById("passErr").style.display = "block";
+        document.getElementById("passReq").style.display = "none";
+        
+      }
+      else if(text.length == 0){
+          document.getElementById("passReq").style.display = "block";
+          document.getElementById("passErr").style.display = "none";
+
+      }
+      else{
+        document.getElementById("passErr").style.display = "none";
+        document.getElementById("passReq").style.display = "none";
+  
+  
+      }
+      }
+
+
+  </script>
+</body>
+</html>

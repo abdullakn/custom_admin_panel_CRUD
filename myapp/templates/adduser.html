@@ -1,0 +1,451 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style>
+    .form-group{
+        margin-bottom: 30px;
+        
+    }
+    
+</style>
+</head>
+<body>
+
+    <div col-md-5 img-thumbnail">
+        <div id="feedback"> <div class="container">
+<div class="col-md-12">
+<div class="form-area">  
+<form role="form" method="POST" >
+    {% csrf_token %}
+<br style="clear:both">
+        <h3 style="margin-bottom: 25px; text-align: center;">Add User</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" name="username" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="address" name="phone" placeholder="Phone" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="subject" name="place" placeholder="Place" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="subject" name="password" placeholder="Password" required>
+        </div>
+       
+
+<button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Add User</button>
+</form>
+</div>
+</div>
+    
+</body>
+</html> -->
+
+
+<html>
+<head>
+<style>
+
+body {
+  margin: auto;
+  background: #eaeaea;  
+  font-family: 'Open Sans', sans-serif;
+}
+
+.info p {
+  text-align:center;
+  color: #999;
+  text-transform:none;
+  font-weight:600;
+  font-size:15px;
+  margin-top:2px
+}
+
+.info i {
+  color:#F6AA93;
+}
+form h1 {
+  font-size: 18px;
+  background: #F6AA93 none repeat scroll 0% 0%;
+  color: rgb(255, 255, 255);
+  padding: 22px 25px;
+  border-radius: 5px 5px 0px 0px;
+  margin: auto;
+  text-shadow: none; 
+  text-align:left
+}
+
+form {
+  border-radius: 5px;
+  max-width:500px;
+  width:100%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+p span {
+  color: #F00;
+}
+
+p {
+  margin: 0px;
+  font-weight: 500;
+  line-height: 2;
+  color:#333;
+}
+
+h1 {
+  text-align:center; 
+  color: #666;
+  text-shadow: 1px 1px 0px #FFF;
+  margin:50px 0px 0px 0px
+}
+
+input {
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #eee;
+  margin-bottom: 15px;
+  width: 75%;
+  height: 40px;
+  float: left;
+  padding: 0px 15px;
+}
+
+a {
+  text-decoration:inherit
+}
+
+textarea {
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #EEE;
+  margin: 0;
+  width: 75%;
+  height: 130px; 
+  float: left;
+  padding: 0px 15px;
+}
+
+.form-group {
+  overflow: hidden;
+  clear: both;
+}
+
+.icon-case {
+  width: 35px;
+  float: left;
+  border-radius: 5px 0px 0px 5px;
+  background:#eeeeee;
+  height:42px;
+  position: relative;
+  text-align: center;
+  line-height:40px;
+}
+
+i {
+  color:#555;
+  margin-top: 10px;
+}
+
+.contentform {
+  padding: 40px 30px;
+}
+
+.bouton-contact{
+  background-color: #81BDA4;
+  color: #FFF;
+  text-align: center;
+  width: 100%;
+  border:0;
+  padding: 17px 25px;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+
+
+
+.validation {
+  display:none;
+  margin: 0 0 10px;
+  font-weight:400;
+  font-size:13px;
+  color: #DE5959;
+}
+
+#sendmessage {
+  border:1px solid #fff;
+  display:none;
+  text-align:center;
+  margin:10px 0;
+  font-weight:600;
+  margin-bottom:30px;
+  background-color: #EBF6E0;
+  color: #5F9025;
+  border: 1px solid #B3DC82;
+  padding: 13px 40px 13px 18px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.03);
+}
+
+#sendmessage.show,.show  {
+  display:block;
+}
+
+</style>
+<script src="https://use.fontawesome.com/0098d0d26d.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+
+</head>
+<body>
+   
+  
+  
+  <form method="POST">{% csrf_token %}
+      <h1 style="text-align:center">Hy Admin, Fill This</h1>
+      
+    <div class="contentform">
+      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
+
+
+      <div class="leftcontact">
+           
+
+            <div class="form-group">
+            <p>Username <span>*</span></p>
+            <span class="icon-case"><i class="fa fa-user"></i></span>
+        <input type="text" name="username" id="name" id="prenom" data-rule="required" onblur="nameValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
+                <div class="validation"></div>
+                
+      </div>
+      <span id="nameReq" class="formValid" style="display: none;color: red;">Field Required*</span>
+                        
+                <span id="nameLen" class="formValid" style="display: none;color: red;">Minimum 4 characters required*</span>
+
+      <div class="form-group">
+      <p>E-mail <span>*</span></p>  
+      <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
+                <input type="email" name="email" id="email" data-rule="email" onblur="emailValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
+                <div class="validation"></div>
+      </div>  
+      <span id="emailReq" class="formValid"  style="display: none;color: red;">Field Required*</span>
+            <span id="emailErr" class="formValid"  style="display: none;color: red;">Invalid email*</span>
+
+      <div class="form-group">
+      <p>Phone <span>*</span></p>
+      <span class="icon-case"><i class="fa fa-phone" aria-hidden="true"></i></span>
+        <input type="text" name="phone" id="phone" data-rule="required" onblur="phoneValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+                <div class="validation"></div>
+          
+      </div>
+      <span id="phoneReq" class="formValid"  style="display: none;color: red;">Field Required*</span>
+      <span id="phoneErr" class="formValid"  style="display: none;color: red;">only numbers*</span>
+      <span id="phoneLen" class="formValid"  style="display: none;color: red;">10 character*</span>
+      <div class="form-group">
+      <p>Place <span>*</span></p>
+      <span class="icon-case">	<i class="fa fa-location-arrow"></i></span>
+        <input type="text" name="place" id="place" data-rule="required" onblur="placeValid()" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+                <div class="validation"></div>
+      </div>
+      <span id="placeReq" class="formValid" style="display: none;color: red;">Field Required*</span>
+
+      <div class="form-group">
+      <p>Password <span>*</span></p>
+      <span class="icon-case">	<i class="fa fa-lock"></i></span>
+        <input type="password" name="password" id="password" onblur="passValid()" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Adresse' doit être renseigné."/>
+                <div class="validation"></div>
+      </div>
+
+      <span id="passErr" class="formValid"  style="display: none;color: red;">Password is too short*</span>
+            <span id="passReq" class="formValid"  style="display: none;color: red;">Password required*</span>
+
+     
+
+
+
+  </div>
+  <p style="color: red;">{{error}}</p>
+
+  <!-- <div class="rightcontact">  
+
+      <div class="form-group">
+      <p>City <span>*</span></p>
+      <span class="icon-case"><i class="fa fa-building-o"></i></span>
+        <input type="text" name="ville" id="ville" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné."/>
+                <div class="validation"></div>
+      </div>  
+
+      <div class="form-group">
+      <p>Phone number <span>*</span></p>  
+      <span class="icon-case"><i class="fa fa-phone"></i></span>
+        <input type="text" name="phone" id="phone" data-rule="maxlen:10" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Téléphone' doit être renseigné. Minimum 10 chiffres"/>
+                <div class="validation"></div>
+      </div>
+
+      <div class="form-group">
+      <p>Function <span>*</span></p>
+      <span class="icon-case"><i class="fa fa-info"></i></span>
+                <input type="text" name="fonction" id="fonction" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Fonction' doit être renseigné."/>
+                <div class="validation"></div>
+      </div>
+
+      <div class="form-group">
+      <p>Subject <span>*</span></p> 
+      <span class="icon-case"><i class="fa fa-comment-o"></i></span>
+                <input type="text" name="sujet" id="sujet" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Sujet' doit être renseigné."/>
+                <div class="validation"></div>
+      </div>
+    
+      <div class="form-group">
+      <p>Message <span>*</span></p>
+      <span class="icon-case"><i class="fa fa-comments-o"></i></span>
+                <textarea name="message" rows="14" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
+                <div class="validation"></div>
+      </div>  
+  </div> -->
+  </div>
+<button type="submit" class="bouton-contact">Add User</button>
+  
+</form> 
+
+<script>
+    function nameValid() {
+        var text = document.getElementById("name").value;
+       
+  
+        if (text == "") {
+          document.getElementById("nameReq").style.display = "block";
+          document.getElementById("nameLen").style.display = "none";
+          document.getElementById("nameErr").style.display = "none";
+        } 
+        else if (text.length < 5) {
+          document.getElementById("nameLen").style.display = "block";
+          document.getElementById("nameReq").style.display = "none";
+          document.getElementById("nameErr").style.display = "none";
+        }
+        else {
+          document.getElementById("nameReq").style.display = "none";
+          document.getElementById("nameLen").style.display = "none";
+          document.getElementById("nameErr").style.display = "none";
+  
+        }
+      }
+
+
+      function emailValid() {
+        var text = document.getElementById("email").value;
+        var regx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(text.length==0){
+            document.getElementById("emailReq").style.display = "block";
+    
+        }
+    
+        else if (!text.match(regx)) {
+          document.getElementById("emailErr").style.display = "block";
+          document.getElementById("emailReq").style.display = "none";
+          
+        }
+        else{
+            document.getElementById("emailErr").style.display = "none";
+            document.getElementById("emailReq").style.display = "none";
+    
+        }
+        
+        }
+
+
+        
+	function phoneValid() {
+        var text = document.getElementById("phone").value;
+		var reg=/^[0-9]+$/
+       
+  
+        if (text == "") {
+          document.getElementById("phoneReq").style.display = "block";
+          document.getElementById("phoneLen").style.display = "none";
+          document.getElementById("phoneErr").style.display = "none";
+        } 
+        else if (text.length < 10) {
+          document.getElementById("phoneLen").style.display = "block";
+          document.getElementById("phoneReq").style.display = "none";
+          document.getElementById("phoneErr").style.display = "none";
+        }
+		else if(!text.match(reg)){
+			document.getElementById("phoneLen").style.display = "none";
+			document.getElementById("phoneReq").style.display = "none";
+			document.getElementById("phoneErr").style.display = "block";
+
+		}
+        else {
+          document.getElementById("phoneReq").style.display = "none";
+          document.getElementById("phoneLen").style.display = "none";
+          document.getElementById("phonErr").style.display = "none";
+  
+        }
+      }
+
+
+      function placeValid() {
+        var text = document.getElementById("place").value;
+       
+  
+        if (text == "") {
+          document.getElementById("placeReq").style.display = "block";
+        } 
+        
+        else {
+          document.getElementById("placeReq").style.display = "none";
+          
+  
+        }
+      }
+
+
+	  function passValid() {
+        var text = document.getElementById("password").value;
+        
+    
+         if (text.length < 5) {
+          document.getElementById("passErr").style.display = "block";
+          document.getElementById("passReq").style.display = "none";
+          
+        }
+        else if(text.length == 0){
+            document.getElementById("passReq").style.display = "block";
+            document.getElementById("passErr").style.display = "none";
+
+        }
+        else{
+          document.getElementById("passErr").style.display = "none";
+          document.getElementById("passReq").style.display = "none";
+    
+    
+        }
+        }
+
+
+
+
+
+</script>
+
+  
+</body>
+</html>
+
+
+
