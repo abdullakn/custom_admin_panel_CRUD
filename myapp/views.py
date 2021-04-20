@@ -30,6 +30,7 @@ class Registration(View):
         if MyUserData.objects.filter(username=name).exists():
             return render(request,'registration.html',{'error':"username not available"})
         else:    
+            
 
 
             r1 = MyUserData.objects.create_user(username=name,email=email, password=pwd,phone=phnnumber,place=place)
@@ -45,21 +46,24 @@ class Login(View):
         if request.user.is_authenticated:
             return redirect('/home')
         return render(request, 'login.html', {})
-
+    
     def post(self,request):
         data=request.POST
         us=data["username"]
         psw=data["password"]
-        user=authenticate(request,username=us,password=psw)
-        print(user)
-        if user is not None:
-            login(request,user)
-            return render(request,'home.html',{'name':user})
+        if(us=="admin"):
+            return render(request,'login.html',{"error":"**admin cannot login this way"})
+        else:    
+            user=authenticate(request,username=us,password=psw)
+            print(user)
+            if user is not None:
+                login(request,user)
+                return render(request,'home.html',{'name':user})
 
-            # return redirect('/home')
-        else:
-            return render(request,'login.html',{"error":"**Invalid user Name or Password"})
-
+                # return redirect('/home')
+            else:
+                return render(request,'login.html',{"error":"**Invalid user Name or Password"})
+    
 
 @login_required(login_url="/login")
 def Home(request):
