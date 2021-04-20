@@ -267,6 +267,8 @@
     </tr>
 
     {% endfor %}
+
+
     
 
     
@@ -274,8 +276,31 @@
    
     
     </tbody>
+
+
+    
+
         
 </table>
+
+
+<div class="col-lg-12">
+    <div class="form-group">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <div class= "alert alert-success">{{ message }}</div>
+                {% elif message.tags == "error" %}
+                    <div class= "alert alert-danger">{{ message }}</div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+    </div>
+ </div>
+
+
+
 
 
                 

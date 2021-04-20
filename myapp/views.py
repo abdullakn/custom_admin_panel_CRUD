@@ -10,6 +10,7 @@ from django.contrib.sessions.models import Session
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
 from myapp.filter import UserFilter
+from django.contrib import messages
 # Create your views here.
 
 
@@ -155,6 +156,7 @@ def update(request,id):
         data.phone=phone
         data.place=place
         data.save()
+        messages.success(request,"updated successfully")
         return redirect('/newadmin/')
 
     else:
@@ -171,8 +173,13 @@ def update(request,id):
 
 
 def delete(request,id):
-    MyUserData.objects.get(id=id).delete()
-    return redirect('newadmin')    
+    if  request.session.has_key('is_value'):
+
+        MyUserData.objects.get(id=id).delete()
+        messages.error(request,"deleted successfully")
+        return redirect('newadmin')  
+    else:
+        return redirect('adminlogin')      
 
 
 
@@ -188,7 +195,7 @@ def adduser(request):
         if MyUserData.objects.filter(username=username).exists():
             return render(request,'adduser.html',{'error':"username already taken"})
         else:
-            r1 = MyUserData(username=username,email=email, password=password,phone=phone,place=place)
+            r1 = MyUserData.objects.create_user(username=username,email=email, password=password,phone=phone,place=place)
             r1.save()
             return redirect('/newadmin')
 
